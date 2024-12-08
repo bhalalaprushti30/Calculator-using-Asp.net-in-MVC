@@ -1,0 +1,48 @@
+﻿@model Calculator.Models.calc
+@{
+    ViewBag.Title = "Index";
+}
+<html>
+<head>
+    <script>
+        function clearForm() {
+            document.getElementById("no1").value = "";
+            document.getElementById("no2").value = "";
+            document.getElementById("tot").value = "";
+        }
+    </script>
+</head>
+<body>
+    <h2>Calculator</h2>
+
+    <div class="row">
+        @using (Html.BeginForm("/Index", "calc", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label for="no1">No 1</label>
+                <input type="text" class="form-control" id="no1" name="no1" value="@Model.no1" />
+            </div>
+
+            <div class="form-group">
+                <label for="no2">No 2</label>
+                <input type="text" class="form-control" id="no2" name="no2" value="@Model.no2" />
+            </div>
+
+            <div class="form-group">
+                <label for="total">Total</label>
+                <input type="text" class="form-control" id="tot" name="tot" value="@Model.tot" readonly />
+            </div>
+
+            <button type="submit" class="btn btn-info" id="add" value="add" name="calculate">+</button>
+            <button type="submit" class="btn btn-danger" id="min" value="min" name="calculate">-</button>
+            <button type="submit" class="btn btn-warning" id="mul" value="mul" name="calculate">*</button>
+            <button type="submit" class="btn btn-default" id="div" value="div" name="calculate">/</button>
+            <button type="submit" class="btn btn-primary" id="mod" value="mod" name="calculate">%</button>
+            <button type="submit" class="btn btn-success" id="exp" value="exp" name="calculate">^</button>
+
+            <!-- Clear Button with Bootstrap Info Color -->
+            <button type="button" class="btn btn-info" onclick="clearForm()">Clear</button>
+        }
+    </div>
+</body>
+</html>
